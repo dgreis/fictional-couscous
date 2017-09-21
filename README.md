@@ -4,11 +4,11 @@ It is from a course at MongoDB University that I completed on 7/18/17.
 
 To see MongoMart in action:
 
-Download the MongoMart.
+Download MongoMart
 
-Install the dependencies.
+Install the dependencies
 
-Make sure you have a mongod running version 3.2.x of MongoDB.
+Make sure you have a mongod running version 3.2.x of MongoDB
 
 Import the "item" collection: mongoimport --drop -d mongomart -c item data/items.json
 
