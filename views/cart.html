@@ -80,7 +80,12 @@
                         <td><a href="/item/{{item._id}}">{{item.title}}</a></td>
                         <td class="muted center_text"><a href="/item/{{item._id}}"><img width="300" src="/static/{{item.img_url}}"></a></td>
                         <td>
-                            <select name="quantity" onchange="this.form.submit()">
+                            <select name="quantity" id="quantity_{{item._id}}"
+                                    onfocus="window.previous = this.value;"
+                                    onchange="detCartRemoval(window.previous,this.value,{'id':'{{item._id}}',
+                                                                                         'name': '{{item.title}}',
+                                                                                         'category': '{{item.category}}'
+                                                                                        });">
                                 <option value="0">0 (Remove)</option>
                                 {% for i in range(1,26) %}
                                     {% if item.quantity == i %}

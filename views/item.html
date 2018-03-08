@@ -31,6 +31,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+  <script>
+    dataLayer.push({
+        'ecommerce': {
+            'detail':{
+                'products':[
+                    {'name': '{{item.title}}',
+                     'id': '{{item._id}}',
+                     'category': '{{item.category}}'
+                    }
+                ]
+            }
+        }
+    });
+  </script>
   </head>
   
   <body>
@@ -93,7 +107,20 @@
               {{item.description}}
             </p>
             
-            <form action="/user/{{userId}}/cart/items/{{item._id}}" role="form" method="post">
+            <form action="/user/{{userId}}/cart/items/{{item._id}}" role="form" method="post"
+                onsubmit="dataLayer.push({
+                            'event': 'addToCart',
+                            'ecommerce': {
+                              'add': {                                // 'add' actionFieldObject measures.
+                                'products': [{                        //  adding a product to a shopping cart.
+                                  'name': '{{item.title}}',
+                                  'id': '{{item._id}}',
+                                  'category': '{{item.category}}'
+                                 }]
+                              }
+                            }
+                          });"
+            >
               <button class="btn btn-primary" type="submit">
                 Add to cart
                 <span class="glyphicon glyphicon-chevron-right"></span>
